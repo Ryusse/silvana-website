@@ -3,9 +3,21 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
+    "baseUrl": ".",
     "strictNullChecks": true,
     "types": [
         "@cloudflare/workers-types/2023-07-01"
-    ]
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ],
+      "@modules/*": [
+        "./node_modules/*"
+      ]
+    },
   }
 }

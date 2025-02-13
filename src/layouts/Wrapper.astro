@@ -1,0 +1,63 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+  class?: string;
+  size?: "xl" | "lg" | "md" | "sm";
+  id?: string;
+}>;
+
+const {
+  as: Tag = "div",
+  class: className = "",
+  id,
+  size = "lg",
+  ...props
+}: Props<HTMLTag> = Astro.props;
+---
+
+<Tag
+  class:list={[
+    "layout",
+    className,
+    { xl: size === "xl" },
+    { lg: size === "lg" },
+    { md: size === "md" },
+    { sm: size === "sm" },
+  ]}
+  id={id}
+  {...props}
+>
+  <slot />
+</Tag>
+
+<style lang="scss" scoped>
+  .layout {
+    @apply w-full mx-auto px-4;
+
+    @screen md {
+      @apply w-[calc(100%-56px)];
+    }
+
+    @screen lg {
+      @apply w-[calc(100%-56px)];
+    }
+  }
+
+  .sm {
+    @apply max-w-[900px];
+  }
+
+  .md {
+    @apply max-w-[1240px];
+  }
+
+  .lg {
+    @apply max-w-[1440px];
+  }
+
+  .xl {
+    @apply max-w-[1700px];
+  }
+</style>
