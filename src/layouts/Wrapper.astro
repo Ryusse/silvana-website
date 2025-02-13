@@ -19,45 +19,15 @@ const {
 
 <Tag
   class:list={[
-    "layout",
+    "w-full mx-auto px-4 md:w-[calc(100%-56px)] lg:w-[calc(100%-56px)]",
     className,
-    { xl: size === "xl" },
-    { lg: size === "lg" },
-    { md: size === "md" },
-    { sm: size === "sm" },
+    { "max-w-[1440px]": size === "xl" },
+    { "max-w-[1240px]": size === "lg" },
+    { "max-w-[900px]": size === "md" },
+    { "max-w-[700px]": size === "sm" },
   ]}
   id={id}
   {...props}
 >
   <slot />
 </Tag>
-
-<style lang="scss" scoped>
-  .layout {
-    @apply w-full mx-auto px-4;
-
-    @screen md {
-      @apply w-[calc(100%-56px)];
-    }
-
-    @screen lg {
-      @apply w-[calc(100%-56px)];
-    }
-  }
-
-  .sm {
-    @apply max-w-[900px];
-  }
-
-  .md {
-    @apply max-w-[1240px];
-  }
-
-  .lg {
-    @apply max-w-[1440px];
-  }
-
-  .xl {
-    @apply max-w-[1700px];
-  }
-</style>
