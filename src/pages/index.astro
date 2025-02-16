@@ -4,11 +4,13 @@ export const prerender = false;
 import BannerBlock from "@/components/blocks/BannerBlock.astro";
 import AboutMeBlock from "@/components/blocks/AboutMeBlock.astro";
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
+import CalendarBlock from "@/components/blocks/CalendarBlock.astro";
 ---
 
 <DefaultLayout title="Silvana" description="Couching y formación a tu alcance">
-  <BannerBlock />
-  <AboutMeBlock />
+  <BannerBlock tag="h1" />
+  <AboutMeBlock tag="h2" />
+  <CalendarBlock tag="h3" />
 </DefaultLayout>
 
 <script>
@@ -116,5 +118,45 @@ import DefaultLayout from "@/layouts/DefaultLayout.astro";
           }
         );
       });
+
+    gsap.utils.toArray("[data-animation-up]").forEach((item: any) => {
+      gsap.fromTo(
+        item,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.3,
+          stagger: 0.5,
+          scrollTrigger: item,
+          ease: "cubic-bezier(.435, .250, .150, .965)",
+        }
+      );
+    });
+
+    gsap.utils.toArray("[data-animation-down]").forEach((item: any) => {
+      gsap.fromTo(
+        item,
+        {
+          opacity: 0,
+          x: 0,
+          y: -50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          x: 0,
+          duration: 0.6,
+          delay: 0.3,
+          stagger: 0.5,
+          scrollTrigger: item,
+          ease: "cubic-bezier(.435, .250, .150, .965)",
+        }
+      );
+    });
   });
 </script>

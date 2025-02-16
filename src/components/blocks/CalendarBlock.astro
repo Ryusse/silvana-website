@@ -1,0 +1,45 @@
+---
+import Wrapper from "@/layouts/Wrapper.astro";
+import type { HTMLTag } from "@modules/astro/types";
+import SilvanaPhoto from "@/assets/images/silvana.avif";
+import { Icon } from "astro-icon/components";
+
+import { Image } from "astro:assets";
+
+type Props = {
+  tag?: HTMLTag;
+};
+
+const { tag: Tag = "h1" }: Props = Astro.props;
+---
+
+<Wrapper as="section" class="section grid gap-12 lg:gap-0">
+  <article
+    data-animation-right
+    class="block max-w-[840px] mx-auto"
+    data-animation-down
+  >
+    <Tag class="block heading-01 text-center">
+      Elige tu próxima experiencia de aprendizaje en vivo!
+    </Tag>
+  </article>
+  <div class="grid">
+    <!-- Calendly inline widget begin -->
+    <div
+      data-animation-scale
+      data-url="https://calendly.com/silvanabmaldonado2/30min?primary_color=ac4dd0"
+      class="calendly-inline-widget !min-w-full !mx-auto h-[800px] overflow-hidden lg:h-[680px]"
+    >
+    </div>
+    <script
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async></script>
+    <!-- Calendly inline widget end -->
+  </div>
+  <div class="flex justify-center gap-4" data-animation-up>
+    <a href="/" class="btn btn-primary btn-lg no-animation">
+      Reserva tu lugar ahora
+    </a>
+  </div>
+</Wrapper>
