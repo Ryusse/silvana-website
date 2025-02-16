@@ -1,0 +1,56 @@
+---
+import Wrapper from "@/layouts/Wrapper.astro";
+import type { HTMLTag } from "@modules/astro/types";
+import SilvanaPhoto from "@/assets/images/silvana.avif";
+import { Icon } from "astro-icon/components";
+
+import { Image } from "astro:assets";
+
+type Props = {
+  tag?: HTMLTag;
+};
+
+const { tag: Tag = "h1" }: Props = Astro.props;
+---
+
+<Wrapper as="section" class="py-20 grid lg:grid-cols-2 gap-6 md:gap-10">
+  <article
+    class="grid gap-8 w-full max-w-[545px] text-center lg:text-start mx-auto my-auto"
+  >
+    <Tag class="block">
+      <span class="font-semibold text-3xl md:text-5xl"
+        >Impulsa tu potencial:
+      </span>
+      <br />
+      <span class="font-rouge-script text-primary text-3xl md:text-5xl"
+        >coaching y formación a tu alcance
+      </span>
+    </Tag>
+    <p class="text-gray-500 text-base md:text-xl leading-snug">
+      Empieza a transformar tu vida profesional y personal con las herramientas
+      y la guía que necesitas para alcanzar tu máximo potencial
+    </p>
+    <div
+      class="flex justify-center lg:justify-start flex-col md:flex-row gap-4"
+    >
+      <a href="/" class="btn btn-primary btn-lg no-animation">
+        Descubre contenidos gratuitos
+      </a>
+      <a href="/" class="btn btn-outline btn-lg no-animation">
+        Cursos exclusivos
+      </a>
+    </div>
+  </article>
+  <div class="grid">
+    <figure
+      class="overflow-hidden grid max-w-[347px] mx-auto h-[490px] rounded-[173px]"
+    >
+      <!-- <Icon name="pattern-dots" /> -->
+      <Image
+        class="w-full aspect-square h-full object-cover"
+        src={SilvanaPhoto}
+        alt="Silvana"
+      />
+    </figure>
+  </div>
+</Wrapper>

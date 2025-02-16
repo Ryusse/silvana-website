@@ -7,3 +7,17 @@
     @apply font-sans;
   }
 }
+
+@layer components {
+  .btn-lg {
+    @apply h-13;
+  }
+
+  .btn-outline {
+    @apply border-base-300;
+
+    &:where(:hover, :focus-visible) {
+      @apply border-base-300;
+    }
+  }
+}
