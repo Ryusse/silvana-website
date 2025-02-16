@@ -1,10 +1,120 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
 import BannerBlock from "@/components/blocks/BannerBlock.astro";
+import AboutMeBlock from "@/components/blocks/AboutMeBlock.astro";
 import DefaultLayout from "@/layouts/DefaultLayout.astro";
 ---
 
 <DefaultLayout title="Silvana" description="Couching y formación a tu alcance">
   <BannerBlock />
+  <AboutMeBlock />
 </DefaultLayout>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  document.addEventListener("astro:page-load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray("[data-animation-left]").forEach((item: any) => {
+      gsap.fromTo(
+        item,
+        {
+          opacity: 0,
+          x: -100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          delay: 0.3,
+          stagger: 0.5,
+          scrollTrigger: item,
+          ease: "cubic-bezier(.435, .250, .150, .965)",
+        }
+      );
+    });
+
+    gsap.utils.toArray("[data-animation-right]").forEach((item: any) => {
+      gsap.fromTo(
+        item,
+        {
+          opacity: 0,
+          x: 100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          delay: 0.3,
+          stagger: 0.5,
+          scrollTrigger: item,
+          ease: "cubic-bezier(.435, .250, .150, .965)",
+        }
+      );
+    });
+
+    gsap.utils.toArray("[data-animation-scale]").forEach((item: any) => {
+      gsap.fromTo(
+        item,
+        {
+          opacity: 0,
+          scale: 0.7,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          delay: 0.3,
+          stagger: 0.5,
+          scrollTrigger: item,
+          ease: "cubic-bezier(.435, .250, .150, .965)",
+        }
+      );
+    });
+
+    gsap.utils
+      .toArray("[data-animation-rotate-from-left]")
+      .forEach((item: any) => {
+        gsap.fromTo(
+          item,
+          {
+            opacity: 0,
+            rotateX: -200,
+          },
+          {
+            opacity: 1,
+            rotateX: 0,
+            duration: 0.6,
+            delay: 0.3,
+            stagger: 0.5,
+            scrollTrigger: item,
+            ease: "cubic-bezier(.435, .250, .150, .965)",
+          }
+        );
+      });
+
+    gsap.utils
+      .toArray("[data-animation-rotate-from-right]")
+      .forEach((item: any) => {
+        gsap.fromTo(
+          item,
+          {
+            opacity: 0,
+            rotateX: 200,
+          },
+          {
+            opacity: 1,
+            rotateX: 0,
+            duration: 0.6,
+            delay: 0.3,
+            stagger: 0.5,
+            scrollTrigger: item,
+            ease: "cubic-bezier(.435, .250, .150, .965)",
+          }
+        );
+      });
+  });
+</script>

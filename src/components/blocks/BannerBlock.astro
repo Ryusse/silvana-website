@@ -13,24 +13,19 @@ type Props = {
 const { tag: Tag = "h1" }: Props = Astro.props;
 ---
 
-<Wrapper
-  as="section"
-  class="py-16 md:py-20 grid lg:grid-cols-2 gap-6 md:gap-10"
->
+<Wrapper as="section" class="section grid lg:grid-cols-2 gap-12 lg:gap-6">
   <article
-    data-article
+    data-animation-left
     class="grid gap-8 w-full max-w-[545px] text-center lg:text-start mx-auto my-auto"
   >
     <Tag class="block">
-      <span class="font-semibold text-3xl md:text-5xl"
-        >Impulsa tu potencial:
-      </span>
+      <span class="heading-01">Impulsa tu potencial: </span>
       <br />
       <span class="font-rouge-script text-primary text-3xl md:text-5xl"
         >coaching y formación a tu alcance
       </span>
     </Tag>
-    <p class="text-gray-500 text-base md:text-xl leading-snug">
+    <p class="text-gray-500 text-base md:text-lg !leading-7">
       Empieza a transformar tu vida profesional y personal con las herramientas
       y la guía que necesitas para alcanzar tu máximo potencial
     </p>
@@ -45,51 +40,26 @@ const { tag: Tag = "h1" }: Props = Astro.props;
       </a>
     </div>
   </article>
-  <div class="grid">
+  <div class="grid relative">
     <figure
-      data-banner-picture
-      class="overflow-hidden grid max-w-[347px] mx-auto h-[490px] rounded-[173px]"
+      data-animation-scale
+      class="relative grid max-w-[347px] mx-auto h-[490px]"
     >
-      <!-- <Icon name="pattern-dots" /> -->
+      <Icon
+        name="pattern-circle"
+        class="absolute w-[120px] h-[130px] -left-12 -top-8"
+        data-animation-rotate-from-left
+      />
       <Image
-        class="w-full aspect-square h-full object-cover"
+        class="w-full aspect-square h-full object-cover rounded-[173px]"
         src={SilvanaPhoto}
         alt="Silvana"
+      />
+      <Icon
+        name="pattern-dots"
+        class="absolute w-[138px] h-[90px] -right-12 -bottom-8"
+        data-animation-rotate-from-right
       />
     </figure>
   </div>
 </Wrapper>
-
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  document.addEventListener("astro:page-load", () => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.utils.toArray("[data-article]").forEach((item: any) => {
-      gsap.fromTo(
-        item,
-        {
-          opacity: 0,
-          x: -100,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.6,
-          delay: 0.3,
-          stagger: 0.8,
-          scrollTrigger: item,
-          ease: "cubic-bezier(.435, .250, .150, .965)",
-        }
-      );
-    });
-    gsap.from("[data-banner-picture]", {
-      opacity: 0,
-      scale: 0.7,
-      duration: 1,
-      delay: 0.1,
-    });
-  });
-</script>

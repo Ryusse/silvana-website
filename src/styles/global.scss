@@ -4,7 +4,19 @@
 
 @layer base {
   html {
-    @apply font-sans;
+    @apply font-sans overflow-x-hidden;
+  }
+
+  body {
+    @apply overflow-x-hidden;
+  }
+
+  .section {
+    @apply py-16;
+
+    @screen md {
+      @apply py-20;
+    }
   }
 }
 
@@ -18,6 +30,16 @@
 
     &:where(:hover, :focus-visible) {
       @apply border-base-300;
+    }
+  }
+
+  .heading-01 {
+    @apply font-bold text-4xl;
+    line-height: theme("lineHeight.snug") !important;
+
+    @screen md {
+
+      @apply text-5xl;
     }
   }
 }
