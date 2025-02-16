@@ -1,10 +1,6 @@
 ---
 import Wrapper from "@/layouts/Wrapper.astro";
 import type { HTMLTag } from "@modules/astro/types";
-import SilvanaPhoto from "@/assets/images/silvana.avif";
-import { Icon } from "astro-icon/components";
-
-import { Image } from "astro:assets";
 
 type Props = {
   tag?: HTMLTag;
@@ -14,11 +10,7 @@ const { tag: Tag = "h1" }: Props = Astro.props;
 ---
 
 <Wrapper as="section" class="section grid gap-12 lg:gap-0">
-  <article
-    data-animation-right
-    class="block max-w-[840px] mx-auto"
-    data-animation-down
-  >
+  <article class="block max-w-[840px] mx-auto" data-animation-down>
     <Tag class="block heading-01 text-center">
       Elige tu próxima experiencia de aprendizaje en vivo!
     </Tag>

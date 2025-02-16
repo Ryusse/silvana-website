@@ -1,0 +1,44 @@
+---
+import Wrapper from "@/layouts/Wrapper.astro";
+import type { HTMLTag } from "astro/types";
+import FeatureCard from "@/components/common/FeatureCard.astro";
+
+type Props = {
+  tag?: HTMLTag;
+};
+
+const { tag: Tag = "h1" }: Props = Astro.props;
+---
+
+<Wrapper as="section" class="section grid gap-12 lg:gap-20">
+  <article data-animation-down class="block max-w-[840px] mx-auto">
+    <Tag class="block heading-01 text-center">
+      Elige tu próxima experiencia de aprendizaje en vivo!
+    </Tag>
+  </article>
+  <div class="grid grid-cols-2 gap-14">
+    <div class="grid gap-6">
+      <FeatureCard
+        title="Clarity & Propósito"
+        description="Encuentra tu camino personal y profesional."
+      />
+      <FeatureCard
+        title="Habilidades clave"
+        description="Liderazgo, comunicación y resiliencia."
+      />
+      <FeatureCard
+        title="Resultados tangibles"
+        description="Supera bloqueos y mejora dinámicas de equipo."
+      />
+      <FeatureCard
+        title="Flexibilidad"
+        description="Aprende a tu ritmo o en vivo."
+      />
+      <FeatureCard
+        title="Certificación"
+        description="Cursos diseñados para impactar directamente en tu crecimiento laboral."
+      />
+    </div>
+    <div></div>
+  </div>
+</Wrapper>

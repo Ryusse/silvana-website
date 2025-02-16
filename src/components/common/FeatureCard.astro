@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<div
+  class="border-base-200 bg-base-200 border grid gap-3 rounded-xl p-6 overflow-hidden"
+>
+  <div class="flex items-center gap-4">
+    <Icon name="checkmark-badge-01" class="size-6 stroke-primary stroke-2" />
+    {title && <p class="font-semibold text-xl">{title}</p>}
+  </div>
+  <div>
+    {description && <p class="text-base-content/60 text-lg">{description}</p>}
+  </div>
+</div>
