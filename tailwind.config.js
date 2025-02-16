@@ -14,7 +14,6 @@ export default {
       "rouge-script": ["Rouge Script"],
     },
   },
-
   plugins: [require("flyonui"), require("flyonui/plugin")],
   flyonui: {
     themes: [

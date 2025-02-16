@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 import Wrapper from "@/layouts/Wrapper.astro";
 ---
 
-<Wrapper as="header" class="bg-base-100 flex w-full py-2">
+<Wrapper as="header" class="bg-base-100 flex w-full py-2" data-header>
   <nav class="mx-auto w-full" aria-label="Global">
     <div
       class="relative lg:grid grid-cols-1 lg:grid-cols-[0.2fr_1fr_0.2fr] lg:items-center"
@@ -81,3 +81,14 @@ import Wrapper from "@/layouts/Wrapper.astro";
     </div>
   </nav>
 </Wrapper>
+
+<script>
+  import gsap from "gsap";
+
+  gsap.from("[data-header]", {
+    opacity: 0,
+    y: -50,
+    duration: 0.2,
+    delay: 0.2,
+  });
+</script>

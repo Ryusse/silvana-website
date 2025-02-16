@@ -13,8 +13,12 @@ type Props = {
 const { tag: Tag = "h1" }: Props = Astro.props;
 ---
 
-<Wrapper as="section" class="py-20 grid lg:grid-cols-2 gap-6 md:gap-10">
+<Wrapper
+  as="section"
+  class="py-16 md:py-20 grid lg:grid-cols-2 gap-6 md:gap-10"
+>
   <article
+    data-article
     class="grid gap-8 w-full max-w-[545px] text-center lg:text-start mx-auto my-auto"
   >
     <Tag class="block">
@@ -43,6 +47,7 @@ const { tag: Tag = "h1" }: Props = Astro.props;
   </article>
   <div class="grid">
     <figure
+      data-banner-picture
       class="overflow-hidden grid max-w-[347px] mx-auto h-[490px] rounded-[173px]"
     >
       <!-- <Icon name="pattern-dots" /> -->
@@ -54,3 +59,37 @@ const { tag: Tag = "h1" }: Props = Astro.props;
     </figure>
   </div>
 </Wrapper>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  document.addEventListener("astro:page-load", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray("[data-article]").forEach((item: any) => {
+      gsap.fromTo(
+        item,
+        {
+          opacity: 0,
+          x: -100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          delay: 0.3,
+          stagger: 0.8,
+          scrollTrigger: item,
+          ease: "cubic-bezier(.435, .250, .150, .965)",
+        }
+      );
+    });
+    gsap.from("[data-banner-picture]", {
+      opacity: 0,
+      scale: 0.7,
+      duration: 1,
+      delay: 0.1,
+    });
+  });
+</script>
