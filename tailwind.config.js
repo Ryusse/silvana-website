@@ -1,4 +1,6 @@
 // tailwind.config.cjs
+const tailwind_theme = require("tailwindcss/defaultTheme");
+
 export default {
   darkMode: ["class"],
   content: [
@@ -7,7 +9,10 @@ export default {
     "./node_modules/flyonui/dist/js/*.js",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["Poppins", ...tailwind_theme.fontFamily.sans],
+      "rouge-script": ["Rouge Script"],
+    },
   },
 
   plugins: [require("flyonui"), require("flyonui/plugin")],
